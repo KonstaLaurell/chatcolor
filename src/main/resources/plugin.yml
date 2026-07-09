@@ -1,6 +1,6 @@
 name: CustomChat
 version: 1.0
-main: com.tyhjyys.customchat
+main: com.tyhjyys.customchat.CustomChat
 author: Tyhjyys
 api-version: 26.1.2
 commands:
