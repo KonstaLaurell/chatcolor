@@ -1,13 +1,7 @@
-# Response message for /example ping.
-# Supports MiniMessage formatting: https://docs.advntr.dev/minimessage/format.html
-pong-message: "Pong!"
+# CustomChat Configuration
+# Use {name} for the player's name
+# Use {color} for their custom color
+# Use {message} for what they typed
+# You can use standard Minecraft '&' color codes here
 
-# Response message for /example greet <player>.
-# Use {player} as a placeholder for the target player's name.
-# Supports MiniMessage formatting: https://docs.advntr.dev/minimessage/format.html
-greet-message: "Hello, {player}!"
-
-# Response message for /example creepersKilled.
-# Use {count} as a placeholder for the sender's creeper-kill count.
-# Supports MiniMessage formatting: https://docs.advntr.dev/minimessage/format.html
-creepers-killed-message: "You have killed {count} creeper(s)!"
+chat-format: "{color}{name}&8 » &f{message}"
