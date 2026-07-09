@@ -1,66 +1,50 @@
-# PaperMC/Spigot Minecraft Server Plugin Template
-A template for building PaperMC/Spigot Minecraft server plugins!
+# CustomChat
 
-<!-- TODO: CHANGE ME -->
-[![](https://github.com/CrimsonWarpedcraft/plugin-template/actions/workflows/main.yml/badge.svg)](https://github.com/CrimsonWarpedcraft/plugin-template/actions/workflows/main.yml)
+A blazingly fast, ultra-lightweight (~18KB) chat formatting and color management plugin for PaperMC servers. 
 
-<!-- TODO: CHANGE ME -->
-[![](https://dcbadge.limes.pink/api/server/5XMmeV6EtJ)](https://discord.gg/5XMmeV6EtJ)
+Built using the modern Kyori Adventure API, CustomChat safely handles chat formatting without the bloat. It allows players to change their name color in chat using a predefined list of safe colors, preventing abuse from formatting codes like obfuscation or bolding.
 
-## Features
-### Github Actions 🎬
-* Automated builds, testing, and release drafting
-* [Discord notifcations](https://github.com/marketplace/actions/discord-message-notify) for snapshots and releases
+## ✨ Features
+* **Modern API:** Fully compliant with Paper's modern `AsyncChatEvent` and the Kyori Adventure API (No deprecation warnings!).
+* **Zero Bloat:** Compiled with zero shaded libraries. It relies entirely on the Paper server API, keeping the file size incredibly small.
+* **Predefined Safe Colors:** Players can only choose from a specific list of standard Minecraft colors.
+* **Persistent Data:** Saves player color preferences safely using their UUIDs in a dedicated `data.yml` file.
+* **Custom Formatting:** Easily adjust the layout of your server's chat in the configuration file.
 
-### Bots 🤖
-* **Probot: Stale**
-    * Mark issues stale after 30 days
-* **Dependabot**
-    * Update GitHub Actions workflows
-    * Update Gradle dependencies
+---
 
-### Issue Templates 📋
-* Bug report template
-* Feature request template
+## 📥 Installation
+1. Download the latest `CustomChat-1.0.jar` from your build directory.
+2. Place the `.jar` file into your server's `plugins/` folder.
+3. Restart your server.
+4. The plugin will automatically generate a `CustomChat` folder containing `config.yml` and `data.yml`.
 
-### Gradle Builds 🏗
-* Shadowed plugin dependencies
-* [Checkstyle](https://checkstyle.org/) Google standard style check
-* [SpotBugs](https://spotbugs.github.io/) code analysis
+---
 
-### Testing 🧪
-* [JUnit 5](https://junit.org/) unit tests
-* [Mockito](https://site.mockito.org/) for mocking dependencies in unit tests
+## 💻 Commands & Permissions
 
-### Example Plugin Code 🔌
-* `/example` command via [CommandAPI](https://commandapi.jorel.dev) demonstrating subcommands, tab completion, and permissions
-* Example config loading and validation via [cw-commons](https://github.com/CrimsonWarpedcraft/cw-commons)' `ConfigManager`, backed by [Jackson](https://github.com/fasterxml/jackson) and [Hibernate Validator](https://hibernate.org/validator/)
-* Example persistent per-player data storage via cw-commons' `Repository`/`PlayerDataManager`, demonstrated by `/example creepersKilled`: `CreeperKillListener` writes to it on each creeper kill, `CreepersKilled` reads it back
+| Command | Description | Permission |
+| :--- | :--- | :--- |
+| `/color <colorname>` | Changes your chat name color. | `customchat.color` |
 
-### Config Files 📁
-* Sample plugin.yml with autofill name, version, and main class.
-* Example config.yml
-* Gradle build config
-* Simple .gitignore for common Gradle files
+**Available Colors:**
+`red`, `darkred`, `blue`, `lightblue`, `green`, `darkgreen`, `yellow`, `gold`, `pink`, `purple`, `white`, `gray`, `black`.
 
-## Usage
-In order to use this template for yourself, there are a few things that you will need to keep in mind.
+---
 
-- [Extending the example code](docs/usage.md) — add commands, subcommands, config fields, or persistent per-player data
-- [Customizing this template](docs/customization.md) — the one-time checklist for forking this repo (placeholders, secrets, etc.)
-- [Releases & versioning](docs/releases.md) — PaperMC compatibility, version format, and how to cut a release
-- [Agent instructions & skills](docs/skills.md) — agent guidance, Claude Code support, and available skills
+## ⚙️ Configuration (`config.yml`)
 
-## Building locally
-Thanks to [Gradle](https://gradle.org/), building locally is easy no matter what platform you're on. Simply run the following command:
+You can customize the layout of your chat messages by editing the `config.yml` file. 
 
-```text
-./gradlew build
-```
+* Use `{name}` for the player's username.
+* Use `{color}` for their chosen custom color.
+* Standard legacy `&` color codes can be used to color the brackets, colons, or default text.
 
-This build step will also run all checks and tests, making sure your code is clean.
+**Example Configuration:**
+```yaml
+# CustomChat Configuration
+# Use {name} for the player's name
+# Use {color} for their custom color
+# You can use standard Minecraft '&' color codes for the surrounding layout
 
-JARs can be found in `build/libs/`.
-
-## Contributing
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+chat-format: "{color}{name}&8: &f"
