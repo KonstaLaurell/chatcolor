@@ -8,3 +8,8 @@ commands:
     description: Change your chat name color
     usage: /color <&code>
     permission: customchat.color
+
+permissions:
+  customchat.color:
+    description: Allows the player to change their chat name color
+    default: true
