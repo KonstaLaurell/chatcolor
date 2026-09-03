@@ -20,7 +20,7 @@ repositories {
 dependencies {
     // We use compileOnly here so the Paper API is NOT built into your jar.
     // The server already has it! This is what keeps your file size so tiny.
-    compileOnly("io.papermc.paper:paper-api:26.1.2.build.74-stable")
+    compileOnly("io.papermc.paper:paper-api:26.2.build.121-stable")
 }
 
 // This automatically updates your plugin.yml with the version and name above
